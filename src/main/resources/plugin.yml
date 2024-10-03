@@ -1,0 +1,9 @@
+main: dk.rasmusbendix.regionmobremover.RegionMobRemoverPlugin
+name: RegionMobRemover
+author: rasm945i
+api-version: 1.13
+version: 1.0
+depend: [WorldGuard]
+commands:
+  mobremover:
+    description: Admin command for info and reload of removal-regions
