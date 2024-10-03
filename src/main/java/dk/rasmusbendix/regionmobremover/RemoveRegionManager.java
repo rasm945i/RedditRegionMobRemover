@@ -71,7 +71,7 @@ public class RemoveRegionManager {
     }
 
     public void removeEntitiesFromRegions() {
-        removeRegionList.forEach(RemoveRegion::removeEntitiesInRegionAsync);
+        removeRegionList.forEach(RemoveRegion::removeEntitiesInRegion);
     }
 
 }

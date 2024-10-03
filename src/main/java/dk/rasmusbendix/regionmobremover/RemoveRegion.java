@@ -3,7 +3,6 @@ package dk.rasmusbendix.regionmobremover;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import lombok.Getter;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
@@ -62,7 +61,7 @@ public class RemoveRegion {
                 (location.getZ() >= region.getMinimumPoint().getZ() && location.getZ() <= region.getMaximumPoint().getZ()+1);
     }
 
-    public void removeEntitiesInRegionAsync() {
+    public void removeEntitiesInRegion() {
         getMonstersInRegion().forEach(Entity::remove);
     }
 
