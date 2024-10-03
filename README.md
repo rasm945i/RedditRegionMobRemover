@@ -7,6 +7,9 @@ Remove monsters inside specified regions.
 - `/mobremover reload` - Reloads the config and then reloads regions
 All commands require the `regionmobremover.admin` permission!
 
+# Dependencies
+- WorldGuard (which requires WorldEdit)
+
 # Default config example
 ```yaml
 message:
