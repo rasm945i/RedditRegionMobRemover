@@ -1,6 +1,7 @@
 package dk.rasmusbendix.regionmobremover;
 
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import dk.rasmusbendix.regionmobremover.rules.RemoveRule;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -18,10 +19,12 @@ public class RemoveRegion {
     private final Location regionCenter;
     private final double removeRadius;
     private final double removeHeight;
+    private final RemoveRule ruleGroup;
 
-    public RemoveRegion(World world, ProtectedRegion region, JavaPlugin plugin) {
+    public RemoveRegion(World world, ProtectedRegion region, RemoveRule ruleGroup, JavaPlugin plugin) {
         this.region = region;
         this.plugin = plugin;
+        this.ruleGroup = ruleGroup;
         this.regionCenter = calculateCenter(world, region);
         this.removeRadius = calculateRadius(region) + 2;
         this.removeHeight = calculateHeight(region);
@@ -62,7 +65,11 @@ public class RemoveRegion {
     }
 
     public void removeEntitiesInRegion() {
-        getMonstersInRegion().forEach(Entity::remove);
+        getMonstersInRegion().forEach(entity -> {
+            if(ruleGroup.isRemovableEntity(entity)) {
+                entity.remove();
+            }
+        });
     }
 
 }

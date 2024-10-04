@@ -16,10 +16,10 @@ import java.util.List;
 
 public class RemoveRegionManager {
 
-    private final JavaPlugin plugin;
+    private final RegionMobRemoverPlugin plugin;
     @Getter private final List<RemoveRegion> removeRegionList;
 
-    public RemoveRegionManager(JavaPlugin plugin) {
+    public RemoveRegionManager(RegionMobRemoverPlugin plugin) {
         this.plugin = plugin;
         this.removeRegionList = new ArrayList<>();
         loadRegions(plugin.getConfig());
@@ -58,7 +58,7 @@ public class RemoveRegionManager {
                     continue;
                 }
                 
-                RemoveRegion removeRegion = new RemoveRegion(world, region, plugin);
+                RemoveRegion removeRegion = new RemoveRegion(world, region, plugin.getRuleManager().getRule("default"), plugin);
                 addRemoveRegion(removeRegion);
                 
             }
