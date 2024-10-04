@@ -11,3 +11,13 @@ regions:
     - shopRegion
   world_nether:
     - netherSpawnRegion
+remove-preset:
+  default:
+    # Any monster
+    remove-monsters: true
+    # Any animal
+    remove-animals: false
+    # Default boat and default minecart, not modified versions
+    remove-transport: false
+    # Find EntityTypes here: https://jd.papermc.io/paper/1.21.1/org/bukkit/entity/EntityType.html
+    also-remove: []
