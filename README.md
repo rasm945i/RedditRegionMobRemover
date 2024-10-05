@@ -1,5 +1,5 @@
-# Region Mob Remover
-Remove monsters inside specified regions.
+# Region Entity Remover
+Remove entities inside specified regions.
 
 # Commands
 - `/mobremover` - Shows available commands
