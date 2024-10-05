@@ -29,9 +29,10 @@ public class RuleManager {
 
     public void loadRules() {
 
+        // Even if 'remove-preset' doesn't exist, for some reason 'section' is not null?
+        rules.put("default", new MonsterRemoveRule());
         ConfigurationSection section = plugin.getConfig().getConfigurationSection("remove-preset");
         if(section == null) {
-            rules.put("default", new MonsterRemoveRule());
             return;
         }
 
