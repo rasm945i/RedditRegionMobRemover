@@ -39,6 +39,7 @@ public class RemoverCommand implements CommandExecutor {
 
         if(args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
             plugin.reloadConfig();
+            plugin.getRuleManager().reloadRules();
             plugin.getRemoveRegionManager().reload();
             sender.sendMessage(ChatColor.YELLOW + "Reloaded regions from config!");
             return true;
