@@ -6,7 +6,6 @@ import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Monster;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collection;
@@ -52,9 +51,9 @@ public class RemoveRegion {
         return region.getMaximumPoint().getY() - region.getMinimumPoint().getY();
     }
 
-    private Collection<Entity> getMonstersInRegion() {
+    private Collection<Entity> getEntitiesInsideRegion() {
         Collection<Entity> entities = regionCenter.getNearbyEntities(removeRadius, removeHeight, removeRadius);
-        entities.removeIf(entity -> !isInsideRegion(entity.getLocation()) || !(entity instanceof Monster));
+        entities.removeIf(entity -> !isInsideRegion(entity.getLocation()));
         return entities;
     }
 
@@ -65,7 +64,7 @@ public class RemoveRegion {
     }
 
     public void removeEntitiesInRegion() {
-        getMonstersInRegion().forEach(entity -> {
+        getEntitiesInsideRegion().forEach(entity -> {
             if(removeRule.isRemovableEntity(entity)) {
                 entity.remove();
             }
