@@ -19,12 +19,12 @@ public class RemoveRegion {
     private final Location regionCenter;
     private final double removeRadius;
     private final double removeHeight;
-    private final RemoveRule ruleGroup;
+    private final RemoveRule removeRule;
 
-    public RemoveRegion(World world, ProtectedRegion region, RemoveRule ruleGroup, JavaPlugin plugin) {
+    public RemoveRegion(World world, ProtectedRegion region, RemoveRule removeRule, JavaPlugin plugin) {
         this.region = region;
         this.plugin = plugin;
-        this.ruleGroup = ruleGroup;
+        this.removeRule = removeRule;
         this.regionCenter = calculateCenter(world, region);
         this.removeRadius = calculateRadius(region) + 2;
         this.removeHeight = calculateHeight(region);
@@ -66,7 +66,7 @@ public class RemoveRegion {
 
     public void removeEntitiesInRegion() {
         getMonstersInRegion().forEach(entity -> {
-            if(ruleGroup.isRemovableEntity(entity)) {
+            if(removeRule.isRemovableEntity(entity)) {
                 entity.remove();
             }
         });
